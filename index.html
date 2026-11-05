@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--or:#ee7d3b;--or2:#f9b98a;--nv:#2b2f8f;--mg:#c0267e;--bg:#f6f5fb;--tx:#1d1f4a;--card:#fff;--soft:#eceaf6}
-@media (prefers-color-scheme:dark){:root{--bg:#14153a;--tx:#f0eefb;--card:#1f2150;--soft:#2a2c63;--nv:#aab0ff}}
+:root{--or:#ee7d3b;--or2:#f9b98a;--nv:#2b2f8f;--mg:#c0267e;--bg:#e6e3f3;--tx:#1d1f4a;--card:#fff;--soft:#eceaf6;--line:#d2cde8}
+@media (prefers-color-scheme:dark){:root{--bg:#14153a;--tx:#f0eefb;--card:#1f2150;--soft:#2a2c63;--line:#2a2c63;--nv:#aab0ff}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 "Nunito Sans",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
@@ -44,14 +44,17 @@ h2{font-size:28px;color:var(--nv);margin-bottom:14px}
 .axe small{display:block;color:var(--or2);font-weight:700;font-size:14px}
 .axe strong{font:700 22px/1.15 Oswald,sans-serif;display:block;margin-top:2px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.act{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-decoration:none;background:var(--card);border:2px solid var(--soft);border-radius:16px;padding:14px;min-height:112px;font-weight:700;transition:border-color .15s}
+.act{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;min-height:112px;font-weight:700;transition:border-color .15s}
 .act:hover{border-color:var(--or)}
-.act i{font-style:normal;font-size:28px}
-.act span{font-family:Oswald,sans-serif;font-size:19px;line-height:1.15;color:var(--nv)}
+.tile{display:grid;place-items:center;background:#fff;border-radius:16px;flex:none}
+.act .tile{width:56px;height:56px}.act .tile img{width:42px;height:42px}
+.act .lb{font-family:Oswald,sans-serif;font-size:18px;line-height:1.15;color:var(--nv);overflow-wrap:break-word;hyphens:auto}
 .back{display:inline-block;margin:calc(env(safe-area-inset-top) + 16px) 0 0;background:var(--nv);color:#fff;text-decoration:none;padding:7px 16px;border-radius:20px;font-weight:700;font-size:15px}
 .head{padding:22px 0 8px}
 .head h1{font-size:clamp(32px,8vw,46px);color:var(--nv)}
-.head .ico{font-size:44px;display:block}
+.head .tile{width:84px;height:84px;margin-bottom:12px}.head .tile img{width:64px;height:64px}
+.axe{display:flex;align-items:center;gap:14px}.axe .tile{width:60px;height:60px}.axe .tile img{width:46px;height:46px}
+.chips a{display:inline-flex;align-items:center;gap:6px}.chips img{width:22px;height:22px}
 .head .tag{color:var(--mg);font-weight:700;margin:0 0 6px}
 .box{background:var(--card);border-radius:18px;padding:16px 20px;margin:14px 0;border-top:6px solid var(--or)}
 .box:nth-of-type(2n){border-top-color:var(--mg)}
@@ -63,7 +66,9 @@ h2{font-size:28px;color:var(--nv);margin-bottom:14px}
 footer{margin-top:40px;background:var(--nv);color:#fff;border-radius:36px 36px 0 0;padding:30px 0 calc(env(safe-area-inset-bottom) + 30px)}
 @media (prefers-color-scheme:dark){footer{background:#0d0e29}}
 footer h2{color:#fff}
-footer a.mail{display:inline-block;margin-top:8px;background:var(--or);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:30px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+footer a.ask{display:inline-block;border:2px solid #fff;color:#fff;font-weight:700;text-decoration:none;padding:10px 22px;border-radius:30px}
+footer a.mail{display:inline-block;margin-top:0;background:var(--or);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:30px}
 footer p{margin:0 0 6px}
 footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
 #inst{display:none;margin-top:14px;background:#fff;color:var(--nv);border:0;border-radius:30px;padding:9px 18px;font:700 15px "Nunito Sans",sans-serif;cursor:pointer}
@@ -73,6 +78,11 @@ footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
 .fiche h3{font-size:17px;color:var(--mg);margin:14px 0 4px}
 .fiche ol,.fiche ul{margin:0;padding-left:20px}
 .fiche li{margin:5px 0}
+.formbox{background:var(--card);border:2px dashed var(--or);border-radius:20px;padding:20px;text-align:center}
+.formbox h2{margin-bottom:6px}
+.formbox p{margin:0 0 14px}
+.formbtn{display:inline-block;background:var(--mg);color:#fff;font-weight:700;text-decoration:none;padding:13px 26px;border-radius:30px}
+.formbtn:hover{filter:brightness(1.1)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -82,62 +92,67 @@ footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
   <div class="wrap">
     <h2>Nous contacter</h2>
     <p>Une question, un projet à construire avec votre établissement ?</p>
-    <a class="mail" id="mail" href="#"></a>
+    <div class="cta"><a class="mail" id="mail" href="#"></a><a class="ask" id="ask" href="#" target="_blank" rel="noopener noreferrer"></a></div>
     <small>Projet européen cofinancé par l’Union européenne (FSE+) · GIP FTLV · Académie de Nancy-Metz</small>
   </div>
 </footer>
 
 <script>
 /* ====== À MODIFIER ====== */
-const CONTACT = "contact@horizon28";   // ← remplacez par votre adresse mail
+const CONTACT = "ce.dane@ac-nancy-metz.fr";   // ← remplacez par votre adresse mail
+const QUESTION_URL = "https://VOTRE-FORMULAIRE-QUESTION-GRIST";   // ← lien du formulaire « poser une question »
+const FORM_URL = "https://VOTRE-FORMULAIRE-GRIST";   // ← collez ici le lien de votre formulaire Grist
+const FORM_TITLE = "Un projet d’action dans votre établissement ?";
+const FORM_TEXT = "Remplissez le formulaire pour nous faire part de votre besoin ou de votre projet.";
+const FORM_BTN = "Remplir le formulaire";
 
 /* ====== CONTENU ====== */
 const AXES = [
- {id:1, t:"Un environnement capacitant pour une autonomie grandissante", s:"Axe 1", ico:"🧭",
+ {id:1, t:"Un environnement capacitant pour une autonomie grandissante", s:"Axe 1", ico:"axe1",
   intro:"Donner aux élèves les moyens de progresser et de gagner en autonomie grâce au numérique.",
   pts:["Renforcement de la maîtrise des savoirs fondamentaux","Renforcement de la programmation","Mobilisation des outils d’Intelligence Artificielle Générative en 4ème/3ème"],
   acts:["prog","p2ia","cyber","webradio","webtv"]},
- {id:2, t:"Un soutien à la motivation et à l’engagement", s:"Axe 2", ico:"🔥",
+ {id:2, t:"Un soutien à la motivation et à l’engagement", s:"Axe 2", ico:"axe2",
   intro:"Redonner du sens à l’école en valorisant les élèves et en les rendant acteurs de projets.",
   pts:["Valorisation du réseau des élèves Ambassadrices et Ambassadeurs du Numérique (ADN)","Déploiement de la bibliothèque du projet ESTIME","Développement d’actions spécifiques à destination des filles"],
   acts:["estime","webradio","webtv","partenaires","prog"]},
- {id:3, t:"Citoyenneté numérique", s:"Axe 3", ico:"🛡️",
+ {id:3, t:"Citoyenneté numérique", s:"Axe 3", ico:"axe3",
   intro:"Accompagner les élèves vers des usages du numérique raisonnés et responsables.",
   pts:["Accompagnement aux usages raisonnés et responsables du numérique","Valorisation des pratiques d’éducation à la citoyenneté numérique auprès des élèves","Évènements autour des usages du numérique responsable pour accompagner les élèves"],
   acts:["cyber","webradio","webtv","estime"]}
 ];
 const ACTIONS = [
- {id:"webradio", ico:"🎙️", t:"Webradio",
+ {id:"webradio", ico:"webradio", t:"Webradio",
   d:"Les élèves conçoivent, enregistrent et diffusent leurs propres émissions ou podcasts : interviews, chroniques, portraits (par exemple de femmes scientifiques).",
   obj:["S’exprimer à l’oral avec clarté et confiance","Écrire pour être entendu, structurer un propos","Travailler en équipe avec des rôles (animateur, technicien, rédacteur)","Vérifier ses sources et développer l’esprit critique"],
   lien:"Valorise les élèves et les ADN (axe 2), développe créativité, communication et collaboration (axe 1) et sensibilise au droit à la voix et à l’image (axe 3).",
   mat:["Micros (casques-micros ou micros USB)","Enregistreur numérique ou table de mixage","Ordinateur ou tablette avec logiciel de montage audio (ex. Audacity)","Salle au calme et espace de diffusion du podcast"]},
- {id:"webtv", ico:"🎬", t:"WebTV",
+ {id:"webtv", ico:"webtv", t:"WebTV",
   d:"Réalisation de reportages, journaux télévisés ou interviews filmées par les élèves, depuis l’écriture jusqu’au montage.",
   obj:["Scénariser, filmer et monter une courte vidéo","Développer l’expression orale et la coopération","Analyser les images et les médias de façon critique","Respecter le droit à l’image"],
   lien:"Met les élèves en situation de projet et d’engagement (axe 2), travaille les compétences du XXIème siècle (axe 1) et l’éducation aux médias (axe 3).",
   mat:["Tablettes ou caméra","Trépied et micro-cravate","Éclairage simple (fond vert en option)","Logiciel de montage vidéo"]},
- {id:"prog", ico:"🤖", t:"Programmation et robotique",
+ {id:"prog", ico:"prog", t:"Programmation et robotique",
   d:"Initiation à la programmation à travers des défis concrets : Lego Spike, robots Lotibot, robots Maqueen (carte micro:bit). À proposer en classes mixtes.",
   obj:["Comprendre la logique algorithmique et décomposer un problème","Apprendre par essai-erreur et développer la persévérance","Coopérer pour résoudre un défi","Susciter l’intérêt des filles comme des garçons pour le numérique"],
   lien:"Répond directement à l’objectif de renforcement de la programmation (axe 1) et permet des actions dédiées aux filles (axe 2).",
   mat:["Kits Lego Spike, Lotibot ou robots Maqueen avec carte micro:bit","Ordinateurs ou tablettes","Tapis ou parcours et fiches défis","Un enseignant ou référent numérique pour animer"]},
- {id:"estime", ico:"🌱", t:"ESTIME – bien-être des élèves",
+ {id:"estime", ico:"estime", t:"ESTIME – bien-être des élèves",
   d:"Dispositif porté par la DRANE pour le bien-être des élèves. Le projet Horizon 28 déploie la bibliothèque de ressources ESTIME dans les établissements.",
   obj:["Favoriser l’estime de soi et le bien-être","Améliorer le climat scolaire","Prévenir le décrochage en agissant sur l’engagement et la confiance"],
   lien:"Contribue directement à l’amélioration du bien-être et du climat scolaire, qui figurent parmi les objectifs du projet, et soutient la motivation (axe 2).",
   mat:["Accès à la bibliothèque ESTIME","Ordinateur ou vidéoprojecteur pour les séances","Un temps de classe ou de vie scolaire dédié"]},
- {id:"p2ia", ico:"📚", t:"Ressources P2IA",
+ {id:"p2ia", ico:"p2ia", t:"Ressources P2IA",
   d:"Ressources numériques d’entraînement pour consolider les savoirs fondamentaux en autonomie, à son rythme : Lalilo (lecture), MathIA (mathématiques), Mathlive, Iota…",
   obj:["Consolider lecture, écriture et mathématiques","Permettre un entraînement différencié selon les besoins","Donner de l’autonomie aux élèves, en classe ou à la maison"],
   lien:"Soutient le renforcement de la maîtrise des savoirs fondamentaux (axe 1).",
   mat:["Ordinateurs ou tablettes avec connexion internet","Comptes élèves et enseignants (selon les ressources)","Temps d’entraînement régulier en classe"]},
- {id:"cyber", ico:"🧩", t:"Jeux déconnectés : cybercitoyenneté et cybersécurité",
+ {id:"cyber", ico:"cyber", t:"Jeux déconnectés : cybercitoyenneté et cybersécurité",
   d:"Des jeux de cartes et de plateau, sans écran, pour amener les élèves à réfléchir ensemble aux risques du numérique : La Fresque des cybercitoyens, Molo-molo sur le web, Future of IA…",
   obj:["Repérer les risques en ligne (cyberharcèlement, sécurité des données, désinformation)","Adopter des comportements responsables sur Internet","Débattre, argumenter et s’écouter dans un cadre bienveillant","Comprendre ce que l’IA change aux usages et aux métiers"],
   lien:"Répond à l’axe 3 (citoyenneté numérique, usages raisonnés et responsables), éclaire l’usage de l’IA générative en 4ème/3ème (axe 1) et peut être animé avec les élèves ADN (axe 2). Contribue aussi au climat scolaire.",
   mat:["Les jeux : Fresque des cybercitoyens (boîtes de cartes), kit Molo-molo sur le web, Future of IA (à imprimer)","Tables pour travailler en groupes de 4 à 6","Une tablette connectée ou un vidéoprojecteur pour les ressources complémentaires","Un adulte animateur formé aux règles du jeu choisi"]},
- {id:"partenaires", ico:"🤝", t:"Partenaires : Girls Can Code, Prolongin…",
+ {id:"partenaires", ico:"partenaires", t:"Partenaires : Girls Can Code, Prolongin…",
   d:"Des partenaires extérieurs interviennent auprès des élèves pour faire découvrir le numérique et ses métiers, avec une attention particulière portée aux filles.",
   obj:["Découvrir le numérique et ses métiers","Encourager l’engagement des filles dans les activités numériques","Ouvrir l’établissement à des intervenants extérieurs"],
   lien:"Alimente les actions spécifiques à destination des filles (axe 2) et enrichit les projets de programmation et de citoyenneté numérique.",
@@ -234,6 +249,9 @@ const SEANCES = {
 
 /* ====== RENDU ====== */
 const app=document.getElementById('app');
+const ic=(n,z)=>`<img src="icons/${n}.svg" alt="" width="${z}" height="${z}">`;
+const SHORT={prog:"Programmation et robotique",estime:"ESTIME",cyber:"Jeux déconnectés",partenaires:"Partenaires"};
+const lab=a=>SHORT[a.id]||a.t;
 const li=a=>'<ul>'+a.map(x=>`<li>${x}</li>`).join('')+'</ul>';
 const home=()=>`
 <header class="hero"><div class="wrap">
@@ -245,17 +263,18 @@ const home=()=>`
 </div></header>
 <div class="wrap">
 <section><h2>Les 3 axes du projet</h2><nav class="axes">
-${AXES.map(a=>`<a class="axe" href="#/axe/${a.id}"><small>${a.ico} ${a.s}</small><strong>${a.t}</strong></a>`).join('')}
+${AXES.map(a=>`<a class="axe" href="#/axe/${a.id}"><span class="tile">${ic(a.ico,46)}</span><span><small>${a.s}</small><strong>${a.t}</strong></span></a>`).join('')}
 </nav></section>
 <section><h2>Exemples d’actions à mener</h2><nav class="grid">
-${ACTIONS.map(a=>`<a class="act" href="#/action/${a.id}"><i>${a.ico}</i><span>${a.t}</span></a>`).join('')}
-</nav></section></div>`;
+${ACTIONS.map(a=>`<a class="act" href="#/action/${a.id}"><span class="tile">${ic(a.ico,42)}</span><span class="lb">${lab(a)}</span></a>`).join('')}
+</nav></section>
+<section><div class="formbox"><h2>${FORM_TITLE}</h2><p>${FORM_TEXT}</p><a class="formbtn" href="${FORM_URL}" target="_blank" rel="noopener noreferrer">${FORM_BTN} ↗</a></div></section></div>`;
 const axe=a=>`<div class="wrap"><a class="back" href="#/">‹ Accueil</a>
-<div class="head"><span class="ico">${a.ico}</span><p class="tag">${a.s}</p><h1>${a.t}</h1><p>${a.intro}</p></div>
+<div class="head"><span class="tile">${ic(a.ico,64)}</span><p class="tag">${a.s}</p><h1>${a.t}</h1><p>${a.intro}</p></div>
 <div class="box"><h2>Ce que prévoit le projet</h2>${li(a.pts)}</div>
-<div class="box"><h2>Actions pour y répondre</h2><div class="chips">${a.acts.map(i=>{const x=ACTIONS.find(y=>y.id===i);return `<a href="#/action/${i}">${x.ico} ${x.t}</a>`}).join('')}</div></div></div>`;
+<div class="box"><h2>Actions pour y répondre</h2><div class="chips">${a.acts.map(i=>{const x=ACTIONS.find(y=>y.id===i);return `<a href="#/action/${i}">${ic(x.ico,22)} ${lab(x)}</a>`}).join('')}</div></div></div>`;
 const action=a=>{const ax=AXES.filter(x=>x.acts.includes(a.id));return `<div class="wrap"><a class="back" href="#/">‹ Accueil</a>
-<div class="head"><span class="ico">${a.ico}</span><h1>${a.t}</h1><p>${a.d}</p></div>
+<div class="head"><span class="tile">${ic(a.ico,64)}</span><h1>${a.t}</h1><p>${a.d}</p></div>
 <div class="box"><h2>Objectifs pédagogiques</h2>${li(a.obj)}</div>
 <div class="box"><h2>Lien avec Horizon 28</h2><p style="margin:0">${a.lien}</p>
 <div class="chips" style="margin-top:12px">${ax.map(x=>`<a href="#/axe/${x.id}">${x.s} · ${x.t}</a>`).join('')}</div></div>
@@ -265,7 +284,7 @@ const sea=a=>(SEANCES[a.id]||[]).map(s=>`<details class="fiche"><summary>${s.t}<
 function route(p){
   const [,k,id]=(typeof p==='string'?p:(location.hash||'#/')).split('/');
   const A=k==='axe'&&AXES.find(x=>x.id==id), B=k==='action'&&ACTIONS.find(x=>x.id===id);
-  app.innerHTML=A?axe(A):B?action(B):home();
+  app.innerHTML=(A?axe(A):B?action(B):home()).replace(/ ([:;!?])/g,'&nbsp;$1');
   document.title=(A?A.s:B?B.t:'Horizon 28')+' – Horizon 28';
   window.scrollTo(0,0); bindInstall();
 }
@@ -278,6 +297,7 @@ document.addEventListener('click',e=>{
 window.addEventListener('popstate',()=>route());
 window.addEventListener('hashchange',()=>route());
 const m=document.getElementById('mail');m.href='mailto:'+CONTACT;m.textContent=CONTACT;
+const q=document.getElementById('ask');q.href=QUESTION_URL;q.textContent='Poser une question en ligne ↗';
 
 /* ====== INSTALLATION (PWA) ====== */
 let dp=null;
