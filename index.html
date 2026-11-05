@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Horizon 28 – Lutter contre le décrochage scolaire par le numérique</title>
+<meta name="description" content="Projet européen FSE+ Horizon 28 : prévenir le décrochage scolaire par le numérique.">
+<meta name="theme-color" content="#ee7d3b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Horizon 28">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--or:#ee7d3b;--or2:#f9b98a;--nv:#2b2f8f;--mg:#c0267e;--bg:#f6f5fb;--tx:#1d1f4a;--card:#fff;--soft:#eceaf6}
+@media (prefers-color-scheme:dark){:root{--bg:#14153a;--tx:#f0eefb;--card:#1f2150;--soft:#2a2c63;--nv:#aab0ff}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 "Nunito Sans",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:Oswald,"Arial Narrow",Impact,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mg);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.hero{background:linear-gradient(170deg,var(--or) 0%,var(--or2) 100%);color:#fff;padding:calc(env(safe-area-inset-top) + 28px) 0 44px;border-radius:0 0 36px 36px}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:26px}
+.logo{font:700 34px Oswald,sans-serif;color:var(--nv);background:#fff;padding:2px 14px 4px;border-radius:30px;letter-spacing:.5px}
+.logo b{color:var(--or)}
+.fse{font:700 13px/1.15 Oswald,sans-serif;background:#fff;color:var(--nv);border-radius:50%;width:74px;height:74px;display:grid;place-items:center;text-align:center;padding:6px}
+.hero h1{font-size:clamp(38px,9vw,60px);font-weight:700;color:#fff}
+.hero h1 span{color:var(--nv)}
+.hero p{margin:18px 0 0;font-size:18px;max-width:34em}
+.zones{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.zones span{background:#fff;color:var(--nv);font-weight:700;border-radius:20px;padding:3px 14px;font-size:15px}
+.zones em{font-style:normal;width:100%;font-size:15px}
+section{padding:30px 0 4px}
+h2{font-size:28px;color:var(--nv);margin-bottom:14px}
+.axes{display:grid;gap:12px}
+.axe{display:block;text-decoration:none;background:var(--nv);color:#fff;border-radius:18px;padding:18px 20px;border-left:10px solid var(--or);transition:transform .15s}
+.axe:nth-child(2){border-left-color:var(--mg)}
+.axe:nth-child(3){border-left-color:#fff}
+.axe:active,.axe:hover{transform:translateX(4px)}
+.axe small{display:block;color:var(--or2);font-weight:700;font-size:14px}
+.axe strong{font:700 22px/1.15 Oswald,sans-serif;display:block;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.act{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-decoration:none;background:var(--card);border:2px solid var(--soft);border-radius:16px;padding:14px;min-height:112px;font-weight:700;transition:border-color .15s}
+.act:hover{border-color:var(--or)}
+.act i{font-style:normal;font-size:28px}
+.act span{font-family:Oswald,sans-serif;font-size:19px;line-height:1.15;color:var(--nv)}
+.back{display:inline-block;margin:calc(env(safe-area-inset-top) + 16px) 0 0;background:var(--nv);color:#fff;text-decoration:none;padding:7px 16px;border-radius:20px;font-weight:700;font-size:15px}
+.head{padding:22px 0 8px}
+.head h1{font-size:clamp(32px,8vw,46px);color:var(--nv)}
+.head .ico{font-size:44px;display:block}
+.head .tag{color:var(--mg);font-weight:700;margin:0 0 6px}
+.box{background:var(--card);border-radius:18px;padding:16px 20px;margin:14px 0;border-top:6px solid var(--or)}
+.box:nth-of-type(2n){border-top-color:var(--mg)}
+.box h2{font-size:22px;margin-bottom:8px}
+.box ul{margin:0;padding-left:20px}
+.box li{margin:5px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips a{text-decoration:none;background:var(--soft);padding:6px 14px;border-radius:20px;font-weight:700;font-size:15px}
+footer{margin-top:40px;background:var(--nv);color:#fff;border-radius:36px 36px 0 0;padding:30px 0 calc(env(safe-area-inset-bottom) + 30px)}
+@media (prefers-color-scheme:dark){footer{background:#0d0e29}}
+footer h2{color:#fff}
+footer a.mail{display:inline-block;margin-top:8px;background:var(--or);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:30px}
+footer p{margin:0 0 6px}
+footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
+#inst{display:none;margin-top:14px;background:#fff;color:var(--nv);border:0;border-radius:30px;padding:9px 18px;font:700 15px "Nunito Sans",sans-serif;cursor:pointer}
+.fiche{background:var(--soft);border-radius:14px;padding:12px 16px;margin:10px 0}
+.fiche summary{cursor:pointer;font:700 20px/1.2 Oswald,sans-serif;color:var(--nv)}
+.fiche summary small{display:block;font:400 14px "Nunito Sans",sans-serif;color:var(--tx);margin-top:3px}
+.fiche h3{font-size:17px;color:var(--mg);margin:14px 0 4px}
+.fiche ol,.fiche ul{margin:0;padding-left:20px}
+.fiche li{margin:5px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<footer>
+  <div class="wrap">
+    <h2>Nous contacter</h2>
+    <p>Une question, un projet à construire avec votre établissement ?</p>
+    <a class="mail" id="mail" href="#"></a>
+    <small>Projet européen cofinancé par l’Union européenne (FSE+) · GIP FTLV · Académie de Nancy-Metz</small>
+  </div>
+</footer>
+
+<script>
+/* ====== À MODIFIER ====== */
+const CONTACT = "contact@horizon28";   // ← remplacez par votre adresse mail
+
+/* ====== CONTENU ====== */
+const AXES = [
+ {id:1, t:"Un environnement capacitant pour une autonomie grandissante", s:"Axe 1", ico:"🧭",
+  intro:"Donner aux élèves les moyens de progresser et de gagner en autonomie grâce au numérique.",
+  pts:["Renforcement de la maîtrise des savoirs fondamentaux","Renforcement de la programmation","Mobilisation des outils d’Intelligence Artificielle Générative en 4ème/3ème"],
+  acts:["prog","p2ia","cyber","webradio","webtv"]},
+ {id:2, t:"Un soutien à la motivation et à l’engagement", s:"Axe 2", ico:"🔥",
+  intro:"Redonner du sens à l’école en valorisant les élèves et en les rendant acteurs de projets.",
+  pts:["Valorisation du réseau des élèves Ambassadrices et Ambassadeurs du Numérique (ADN)","Déploiement de la bibliothèque du projet ESTIME","Développement d’actions spécifiques à destination des filles"],
+  acts:["estime","webradio","webtv","partenaires","prog"]},
+ {id:3, t:"Citoyenneté numérique", s:"Axe 3", ico:"🛡️",
+  intro:"Accompagner les élèves vers des usages du numérique raisonnés et responsables.",
+  pts:["Accompagnement aux usages raisonnés et responsables du numérique","Valorisation des pratiques d’éducation à la citoyenneté numérique auprès des élèves","Évènements autour des usages du numérique responsable pour accompagner les élèves"],
+  acts:["cyber","webradio","webtv","estime"]}
+];
+const ACTIONS = [
+ {id:"webradio", ico:"🎙️", t:"Webradio",
+  d:"Les élèves conçoivent, enregistrent et diffusent leurs propres émissions ou podcasts : interviews, chroniques, portraits (par exemple de femmes scientifiques).",
+  obj:["S’exprimer à l’oral avec clarté et confiance","Écrire pour être entendu, structurer un propos","Travailler en équipe avec des rôles (animateur, technicien, rédacteur)","Vérifier ses sources et développer l’esprit critique"],
+  lien:"Valorise les élèves et les ADN (axe 2), développe créativité, communication et collaboration (axe 1) et sensibilise au droit à la voix et à l’image (axe 3).",
+  mat:["Micros (casques-micros ou micros USB)","Enregistreur numérique ou table de mixage","Ordinateur ou tablette avec logiciel de montage audio (ex. Audacity)","Salle au calme et espace de diffusion du podcast"]},
+ {id:"webtv", ico:"🎬", t:"WebTV",
+  d:"Réalisation de reportages, journaux télévisés ou interviews filmées par les élèves, depuis l’écriture jusqu’au montage.",
+  obj:["Scénariser, filmer et monter une courte vidéo","Développer l’expression orale et la coopération","Analyser les images et les médias de façon critique","Respecter le droit à l’image"],
+  lien:"Met les élèves en situation de projet et d’engagement (axe 2), travaille les compétences du XXIème siècle (axe 1) et l’éducation aux médias (axe 3).",
+  mat:["Tablettes ou caméra","Trépied et micro-cravate","Éclairage simple (fond vert en option)","Logiciel de montage vidéo"]},
+ {id:"prog", ico:"🤖", t:"Programmation et robotique",
+  d:"Initiation à la programmation à travers des défis concrets : Lego Spike, robots Lotibot, robots Maqueen (carte micro:bit). À proposer en classes mixtes.",
+  obj:["Comprendre la logique algorithmique et décomposer un problème","Apprendre par essai-erreur et développer la persévérance","Coopérer pour résoudre un défi","Susciter l’intérêt des filles comme des garçons pour le numérique"],
+  lien:"Répond directement à l’objectif de renforcement de la programmation (axe 1) et permet des actions dédiées aux filles (axe 2).",
+  mat:["Kits Lego Spike, Lotibot ou robots Maqueen avec carte micro:bit","Ordinateurs ou tablettes","Tapis ou parcours et fiches défis","Un enseignant ou référent numérique pour animer"]},
+ {id:"estime", ico:"🌱", t:"ESTIME – bien-être des élèves",
+  d:"Dispositif porté par la DRANE pour le bien-être des élèves. Le projet Horizon 28 déploie la bibliothèque de ressources ESTIME dans les établissements.",
+  obj:["Favoriser l’estime de soi et le bien-être","Améliorer le climat scolaire","Prévenir le décrochage en agissant sur l’engagement et la confiance"],
+  lien:"Contribue directement à l’amélioration du bien-être et du climat scolaire, qui figurent parmi les objectifs du projet, et soutient la motivation (axe 2).",
+  mat:["Accès à la bibliothèque ESTIME","Ordinateur ou vidéoprojecteur pour les séances","Un temps de classe ou de vie scolaire dédié"]},
+ {id:"p2ia", ico:"📚", t:"Ressources P2IA",
+  d:"Ressources numériques d’entraînement pour consolider les savoirs fondamentaux en autonomie, à son rythme : Lalilo (lecture), MathIA (mathématiques), Mathlive, Iota…",
+  obj:["Consolider lecture, écriture et mathématiques","Permettre un entraînement différencié selon les besoins","Donner de l’autonomie aux élèves, en classe ou à la maison"],
+  lien:"Soutient le renforcement de la maîtrise des savoirs fondamentaux (axe 1).",
+  mat:["Ordinateurs ou tablettes avec connexion internet","Comptes élèves et enseignants (selon les ressources)","Temps d’entraînement régulier en classe"]},
+ {id:"cyber", ico:"🧩", t:"Jeux déconnectés : cybercitoyenneté et cybersécurité",
+  d:"Des jeux de cartes et de plateau, sans écran, pour amener les élèves à réfléchir ensemble aux risques du numérique : La Fresque des cybercitoyens, Molo-molo sur le web, Future of IA…",
+  obj:["Repérer les risques en ligne (cyberharcèlement, sécurité des données, désinformation)","Adopter des comportements responsables sur Internet","Débattre, argumenter et s’écouter dans un cadre bienveillant","Comprendre ce que l’IA change aux usages et aux métiers"],
+  lien:"Répond à l’axe 3 (citoyenneté numérique, usages raisonnés et responsables), éclaire l’usage de l’IA générative en 4ème/3ème (axe 1) et peut être animé avec les élèves ADN (axe 2). Contribue aussi au climat scolaire.",
+  mat:["Les jeux : Fresque des cybercitoyens (boîtes de cartes), kit Molo-molo sur le web, Future of IA (à imprimer)","Tables pour travailler en groupes de 4 à 6","Une tablette connectée ou un vidéoprojecteur pour les ressources complémentaires","Un adulte animateur formé aux règles du jeu choisi"]},
+ {id:"partenaires", ico:"🤝", t:"Partenaires : Girls Can Code, Prolongin…",
+  d:"Des partenaires extérieurs interviennent auprès des élèves pour faire découvrir le numérique et ses métiers, avec une attention particulière portée aux filles.",
+  obj:["Découvrir le numérique et ses métiers","Encourager l’engagement des filles dans les activités numériques","Ouvrir l’établissement à des intervenants extérieurs"],
+  lien:"Alimente les actions spécifiques à destination des filles (axe 2) et enrichit les projets de programmation et de citoyenneté numérique.",
+  mat:["Salle équipée pour l’intervention","Ordinateurs ou tablettes selon l’atelier","Planning à convenir avec le partenaire"]}
+];
+
+/* ====== FICHES DE SÉANCE (t=titre, m=durée/public, obj, e=[durée, étape], c=conseils) ====== */
+const SEANCES = {
+ webradio:[{t:"Podcast : portraits de femmes scientifiques", m:"Environ 3 h (demi-journée avec une pause) · groupes de 4 · classe mixte",
+  obj:["Rechercher et croiser des informations fiables","Rédiger un court texte destiné à être dit à l’oral","Travailler en équipe avec des rôles définis","Enregistrer et monter un podcast d’environ 2 minutes","Découvrir des parcours de femmes scientifiques"],
+  e:[["10 min","Lancement : présentation du défi, groupes de 4 et rôles (chercheur d’infos, rédacteur, voix, technicien)."],
+     ["35 min","Recherche : chaque groupe choisit une scientifique (Marie Curie, Rosalind Franklin, Katherine Johnson, Ada Lovelace, Marie Tharp…) et remplit une fiche : qui est-elle, sa découverte, les obstacles rencontrés, pourquoi elle inspire. Au moins deux sources croisées."],
+     ["30 min","Écriture du script : introduction, corps, conclusion, pour environ 2 minutes (300 mots environ)."],
+     ["15 min","Répétition à voix haute et chronométrage."],
+     ["40 min","Enregistrement : les groupes passent à tour de rôle, les autres peaufinent leur script ou choisissent un jingle."],
+     ["40 min","Montage : couper les erreurs, assembler voix, jingle et musique libre de droits."],
+     ["20 min","Écoute collective, retours des camarades, bilan."]],
+  c:["Prévoir un coin calme par groupe pour l’enregistrement.","Utiliser uniquement des musiques libres de droits.","Demander l’autorisation de diffusion avant toute mise en ligne.","Si les élèves utilisent une IA pour chercher, leur faire vérifier chaque information dans une autre source."]}],
+ webtv:[{t:"Reportage vidéo de 2 minutes", m:"Environ 3 h · groupes de 4 · classe mixte",
+  obj:["Construire un récit en images (storyboard)","Maîtriser les bases du cadrage, du son et du montage","Coopérer avec des rôles (réalisateur, cadreur, preneur de son, présentateur)","Respecter le droit à l’image"],
+  e:[["15 min","Lancement : choix du sujet (un métier, un lieu de l’établissement, un portrait…), groupes et rôles."],
+     ["30 min","Écriture : questions d’interview et storyboard en 5 à 8 plans."],
+     ["20 min","Consignes de tournage : plans larges et gros plans, stabilité, qualité du son."],
+     ["45 min","Tournage, avec autorisations d’image remplies avant de filmer."],
+     ["45 min","Montage : tri des plans, ordre, titres et musique libre de droits."],
+     ["25 min","Projection collective et bilan."]],
+  c:["Filmer en paysage et tenir la tablette à deux mains ou sur trépied.","Tourner dans un lieu calme pour garder un son propre."]}],
+ prog:[{t:"Lego Spike : construire un robot et relever des défis", m:"Environ 3 h · binômes ou trios, de préférence mixtes · à partir de la 6ème",
+  obj:["Assembler un robot en suivant un plan","Comprendre séquence, boucle et condition","Utiliser des capteurs (couleur, distance)","Persévérer : tester, corriger, recommencer","Coopérer pour atteindre un objectif commun"],
+  e:[["15 min","Présentation du matériel, de l’application SPIKE et des règles de coopération."],
+     ["40 min","Construction du robot à partir du modèle guidé de l’application."],
+     ["15 min","Premiers programmes : avancer, tourner, attendre."],
+     ["20 min","Défi 1 : avancer d’un mètre et s’arrêter sur la ligne."],
+     ["25 min","Défi 2 : parcourir un carré et revenir au point de départ."],
+     ["30 min","Défi 3 : avec le capteur de couleur ou de distance, s’arrêter sur une ligne rouge ou éviter un obstacle."],
+     ["25 min","Défi final : parcours chronométré ou mini-labyrinthe, avec présentation de la stratégie de chaque équipe."],
+     ["10 min","Bilan : ce qui a marché, les erreurs utiles, ce que j’ai appris."]],
+  c:["Préparer les parcours au sol (ruban adhésif) avant la séance.","Faire alterner les rôles : un élève manipule, un autre programme.","Prévoir des défis bonus pour les équipes qui avancent vite."]},
+  {t:"Maqueen et micro:bit : obstacles et suivi de ligne", m:"Environ 2 h · binômes, de préférence mixtes · collège",
+  obj:["Découvrir les composants d’un robot (moteurs, capteurs, LED) et le rôle de la carte micro:bit","Programmer en blocs avec MakeCode","Utiliser le capteur de distance et les capteurs de ligne","Tester, déboguer et améliorer son programme","Coopérer au sein du binôme"],
+  e:[["15 min","Présentation du robot Maqueen, de la carte micro:bit et de l’éditeur MakeCode avec l’extension Maqueen."],
+     ["20 min","Premiers programmes : afficher une icône sur la micro:bit, allumer les LED, faire avancer et reculer le robot, puis transférer le programme par USB."],
+     ["20 min","Défi 1 : avancer, tourner et parcourir un carré."],
+     ["25 min","Défi 2 : avec le capteur de distance, s’arrêter devant un obstacle, puis le contourner."],
+     ["30 min","Défi 3 : suivre une ligne noire au sol grâce aux capteurs de ligne."],
+     ["10 min","Bilan : ce qui a posé problème et comment les équipes l’ont résolu."]],
+  c:["Charger ou contrôler les piles avant la séance.","Tracer les pistes avec du ruban adhésif noir sur un sol clair.","Tester d’abord dans le simulateur MakeCode pour gagner du temps.","Défi bonus : piloter le robot à distance avec une deuxième carte micro:bit grâce à la radio."]},
+  {t:"Lotibot : se déplacer et coder sur quadrillage", m:"Environ 1 h · groupes de 3 à 4 · primaire et début de collège",
+  obj:["Se repérer et coder des déplacements","Anticiper et vérifier une suite d’instructions","Débuter en pensée algorithmique"],
+  e:[["10 min","Présentation du robot et des instructions."],
+     ["15 min","Manipulation libre sur le quadrillage."],
+     ["25 min","Défis croissants : aller de A à B, éviter des obstacles, passer par trois cases imposées."],
+     ["10 min","Bilan : comparer les chemins trouvés."]]}],
+ estime:[{t:"Séance bien-être en classe", m:"Environ 55 min · classe entière · à adapter à la ressource ESTIME choisie",
+  obj:["Mettre des mots sur ses émotions","Renforcer l’estime de soi","Contribuer à un climat de classe apaisé"],
+  e:[["10 min","Rituel d’accueil : chacun dit comment il se sent."],
+     ["20 min","Activité autour d’une ressource choisie dans la bibliothèque ESTIME."],
+     ["15 min","Échange en cercle, sans jugement."],
+     ["10 min","Trace individuelle ou engagement collectif pour la suite."]],
+  c:["Choisir la ressource avec le référent ou la vie scolaire.","Rappeler la règle de bienveillance avant l’échange."]}],
+ p2ia:[{t:"Séance d’entraînement en autonomie", m:"Environ 55 min · élèves seuls ou en binômes · en classe",
+  obj:["Consolider un savoir fondamental ciblé","S’entraîner à son rythme","Repérer ses progrès"],
+  e:[["10 min","Connexion et rappel de l’objectif (lecture ou mathématiques)."],
+     ["30 min","Entraînement individuel sur la ressource (Lalilo, MathIA…)."],
+     ["10 min","Bilan : chaque élève note ce qu’il a réussi et ce qui reste difficile."],
+     ["5 min","Rangement ; l’enseignant relève les résultats pour adapter la suite."]],
+  c:["Préparer les comptes élèves avant la séance.","Programmer la séance chaque semaine pour que l’effet dure."]}],
+ cyber:[{t:"La Fresque des cybercitoyens", m:"Jeu de cartes collaboratif, sans écran · pour les 11-14 ans (collège) · durée à confirmer avec le livret du jeu",
+  obj:["Prendre conscience des risques et des bonnes pratiques numériques","Mesurer son propre impact en tant que cybercitoyen","Coopérer pour construire une réponse collective"],
+  e:[["10 min","Présentation du jeu, formation des groupes et rappel des règles de bienveillance."],
+     ["Temps de jeu","Les groupes jouent avec les cartes en suivant les règles du livret."],
+     ["15 min","Mise en commun : ce qui a surpris, les risques repérés, les bonnes pratiques retenues."],
+     ["10 min","Bilan : chaque élève formule un engagement personnel."]],
+  c:["Des élèves ADN peuvent être formés pour animer le jeu auprès de leurs camarades.","Utiliser le livret fourni avec le jeu pour les consignes détaillées."]},
+ {t:"Molo-molo sur le web", m:"Kit d’animation de l’académie de Nancy-Metz · cycle 3 (CM1-CM2-6ème) · environ 35 min",
+  obj:["Réfléchir à ses usages du numérique et au temps passé sur les écrans","Apprendre à décrypter les informations reçues","S’exprimer et débattre dans un cadre bienveillant"],
+  e:[["5 min","Accroche : écoute de la musique du conte Babayagagogo, rôles dans chaque groupe (animateur, lecteur, secrétaire, rapporteur)."],
+     ["20 min","Discussion en groupe autour des questions de la carte, avec bâton de parole. Chaque élève place son pion sur le plateau pour se situer par rapport au sujet. Le secrétaire note les réponses."],
+     ["2-3 min","Visionnage de la ressource liée au thème (QR code au dos de la carte)."],
+     ["5 min","Discussion et synthèse : le secrétaire relit, le groupe ajuste ses réponses, le rapporteur restitue."]],
+  c:["La tortue permet aux élèves de parler à la place du personnage, ce qui facilite la prise de parole.","Matériel par groupe : plateau, pions, tortue, carte-questions, bâton de parole."]},
+ {t:"Future of IA", m:"Atelier sans écran, à imprimer · environ 2 h · niveau débutant",
+  obj:["Explorer les nouveaux métiers liés à l’intelligence artificielle","Se poser des questions sur la place de l’IA dans la société","Débattre et coopérer en groupe"],
+  e:[["10 min","Introduction : ce que les élèves savent déjà de l’IA."],
+     ["1 h 30","Atelier en groupes, selon les consignes du jeu imprimé."],
+     ["20 min","Restitution et débat : quels métiers apparaissent, lesquels évoluent, quelles questions éthiques se posent."]],
+  c:["Imprimer et préparer le matériel avant la séance.","Suivre les consignes du jeu pour le déroulement détaillé."]}],
+ partenaires:[{t:"Préparer et exploiter l’intervention d’un partenaire", m:"Avant, pendant et après · durée de l’intervention à définir avec le partenaire",
+  obj:["Faire découvrir le numérique et ses métiers","Encourager l’engagement des filles","Faire dire aux élèves ce qu’ils ont appris"],
+  e:[["20 min","Avant : les élèves préparent des questions pour l’intervenant."],
+     ["À définir","Pendant : atelier ou témoignage animé par le partenaire."],
+     ["20 min","Après : chaque groupe restitue ce qu’il a retenu (affiche, message, court podcast)."]]}]
+};
+
+/* ====== RENDU ====== */
+const app=document.getElementById('app');
+const li=a=>'<ul>'+a.map(x=>`<li>${x}</li>`).join('')+'</ul>';
+const home=()=>`
+<header class="hero"><div class="wrap">
+  <div class="brand"><div class="logo">horizon <b>28</b></div><div class="fse">Projet européen FSE+</div></div>
+  <h1>Lutter contre le décrochage scolaire <span>par le numérique</span></h1>
+  <p>Horizon 28 s’appuie sur le numérique pour prévenir le décrochage scolaire, améliorer le bien-être des élèves et renforcer le climat scolaire. Il développe les compétences du XXIème siècle (créativité, communication, collaboration, esprit critique) pour favoriser autonomie et persévérance.</p>
+  <div class="zones"><em>Public : élèves du primaire et collégiens. Zones ciblées :</em><span>TER</span><span>REP</span><span>REP+</span></div>
+  <button id="inst" type="button">Installer l’application</button>
+</div></header>
+<div class="wrap">
+<section><h2>Les 3 axes du projet</h2><nav class="axes">
+${AXES.map(a=>`<a class="axe" href="#/axe/${a.id}"><small>${a.ico} ${a.s}</small><strong>${a.t}</strong></a>`).join('')}
+</nav></section>
+<section><h2>Exemples d’actions à mener</h2><nav class="grid">
+${ACTIONS.map(a=>`<a class="act" href="#/action/${a.id}"><i>${a.ico}</i><span>${a.t}</span></a>`).join('')}
+</nav></section></div>`;
+const axe=a=>`<div class="wrap"><a class="back" href="#/">‹ Accueil</a>
+<div class="head"><span class="ico">${a.ico}</span><p class="tag">${a.s}</p><h1>${a.t}</h1><p>${a.intro}</p></div>
+<div class="box"><h2>Ce que prévoit le projet</h2>${li(a.pts)}</div>
+<div class="box"><h2>Actions pour y répondre</h2><div class="chips">${a.acts.map(i=>{const x=ACTIONS.find(y=>y.id===i);return `<a href="#/action/${i}">${x.ico} ${x.t}</a>`}).join('')}</div></div></div>`;
+const action=a=>{const ax=AXES.filter(x=>x.acts.includes(a.id));return `<div class="wrap"><a class="back" href="#/">‹ Accueil</a>
+<div class="head"><span class="ico">${a.ico}</span><h1>${a.t}</h1><p>${a.d}</p></div>
+<div class="box"><h2>Objectifs pédagogiques</h2>${li(a.obj)}</div>
+<div class="box"><h2>Lien avec Horizon 28</h2><p style="margin:0">${a.lien}</p>
+<div class="chips" style="margin-top:12px">${ax.map(x=>`<a href="#/axe/${x.id}">${x.s} · ${x.t}</a>`).join('')}</div></div>
+<div class="box"><h2>Matériel nécessaire</h2>${li(a.mat)}</div>
+<div class="box"><h2>Fiches de séance clés en main</h2>${sea(a)}</div></div>`};
+const sea=a=>(SEANCES[a.id]||[]).map(s=>`<details class="fiche"><summary>${s.t}<small>${s.m}</small></summary><h3>Objectifs pédagogiques</h3>${li(s.obj)}<h3>Déroulement</h3><ol>${s.e.map(x=>`<li><b>${x[0]}</b> · ${x[1]}</li>`).join('')}</ol>${s.c?`<h3>Conseils</h3>${li(s.c)}`:''}</details>`).join('');
+function route(p){
+  const [,k,id]=(typeof p==='string'?p:(location.hash||'#/')).split('/');
+  const A=k==='axe'&&AXES.find(x=>x.id==id), B=k==='action'&&ACTIONS.find(x=>x.id===id);
+  app.innerHTML=A?axe(A):B?action(B):home();
+  document.title=(A?A.s:B?B.t:'Horizon 28')+' – Horizon 28';
+  window.scrollTo(0,0); bindInstall();
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#/"]');if(!a)return;
+  e.preventDefault();const h=a.getAttribute('href');
+  try{history.pushState(null,'',h)}catch(_){}
+  route(h);
+});
+window.addEventListener('popstate',()=>route());
+window.addEventListener('hashchange',()=>route());
+const m=document.getElementById('mail');m.href='mailto:'+CONTACT;m.textContent=CONTACT;
+
+/* ====== INSTALLATION (PWA) ====== */
+let dp=null;
+function bindInstall(){const b=document.getElementById('inst');if(!b)return;
+  if(dp)b.style.display='inline-block';
+  b.onclick=async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;b.style.display='none'}}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;bindInstall()});
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+route();
+</script>
+</body>
+</html>
