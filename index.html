@@ -44,7 +44,7 @@ h2{font-size:28px;color:var(--nv);margin-bottom:14px}
 .axe small{display:block;color:var(--or2);font-weight:700;font-size:14px}
 .axe strong{font:700 22px/1.15 Oswald,sans-serif;display:block;margin-top:2px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.act{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;min-height:112px;font-weight:700;transition:border-color .15s}
+.act{display:flex;flex-direction:column;gap:6px;align-items:center;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;min-height:112px;font-weight:700;transition:border-color .15s;text-align:center;justify-content:center}
 .act:hover{border-color:var(--or)}
 .tile{display:grid;place-items:center;background:#fff;border-radius:16px;flex:none}
 .act .tile{width:56px;height:56px}.act .tile img{width:42px;height:42px}
@@ -130,6 +130,11 @@ const ACTIONS = [
   d:"Initiation à la programmation à travers des défis concrets : Lego Spike, robots Lotibot, robots Maqueen (carte micro:bit). À proposer en classes mixtes.",
   obj:["Comprendre la logique algorithmique et décomposer un problème","Apprendre par essai-erreur et développer la persévérance","Coopérer pour résoudre un défi","Susciter l’intérêt des filles comme des garçons pour le numérique"],
   lien:"Répond directement à l’objectif de renforcement de la programmation (axe 1) et permet des actions dédiées aux filles (axe 2).",
+  res:[{t:"Le matériel en bref",l:[
+    ["Lego Spike","kit de construction et de programmation Lego Education : un boîtier programmable, des moteurs et des capteurs (couleur, distance, force) à assembler, programmés en blocs depuis l’application SPIKE sur tablette ou ordinateur."],
+    ["Lotibot","petit robot de sol programmable, simple à prendre en main : il avance sur un quadrillage selon les instructions de déplacement données par les élèves. Idéal pour débuter, du primaire au début du collège."],
+    ["Maqueen","robot éducatif à roues motorisées, équipé de capteurs de ligne, d’un capteur de distance et de LED. Il se pilote avec une carte micro:bit."],
+    ["micro:bit","petite carte programmable avec écran de LED, boutons, capteurs et radio. Elle se programme en blocs avec MakeCode ou en Python, seule ou fixée sur un robot comme Maqueen."]]}],
   mat:["Kits Lego Spike, Lotibot ou robots Maqueen avec carte micro:bit","Ordinateurs ou tablettes","Tapis ou parcours et fiches défis","Un enseignant ou référent numérique pour animer"]},
  {id:"estime", ico:"estime", t:"ESTIME – bien-être des élèves",
   d:"Dispositif académique porté par la DRANE, dédié au bien-être et à l’inclusion scolaire. Le projet Horizon 28 déploie les ressources et le matériel de la mallette ESTIME dans les établissements.",
@@ -155,13 +160,13 @@ const ACTIONS = [
     ["Visites virtuelles","musées, sites historiques, milieux naturels, laboratoires : une manière de voyager sans quitter la salle."]]}],
   mat:["Casques de réalité virtuelle autonomes","Applications installées à l’avance (IREMIA VR, applications de visites ou de découverte des métiers)","Un espace dégagé et sécurisé, assis ou debout selon l’application","Un accompagnateur adulte par casque","Lingettes pour nettoyer les casques entre deux élèves"]},
  {id:"p2ia", ico:"p2ia", t:"Ressources P2IA",
-  d:"Ressources numériques d’entraînement pour consolider les savoirs fondamentaux en autonomie, à son rythme : Lalilo (lecture), Mathia (mathématiques) et Iota (numérique), le projet de l’association 42.",
+  d:"Ressources numériques d’entraînement pour consolider les savoirs fondamentaux en autonomie, à son rythme : Lalilo (lecture), Mathia (mathématiques) et Iota (numérique).",
   obj:["Consolider lecture, écriture et mathématiques","Permettre un entraînement différencié selon les besoins","Donner de l’autonomie aux élèves, en classe ou à la maison"],
   lien:"Soutient le renforcement de la maîtrise des savoirs fondamentaux (axe 1) et, avec Iota, l’initiation à la programmation.",
   res:[{t:"Quelques ressources",l:[
     ["Lalilo","ressource d’entraînement à la lecture pour le cycle 2, qui adapte les exercices au niveau de chaque élève."],
     ["Mathia","ressource de mathématiques qui propose des exercices adaptés au niveau et aux besoins de chaque élève."],
-    ["Iota","plateforme d’apprentissage du numérique entre pairs, conçue par l’école 42 avec l’Éducation nationale pour le cycle 3 : univers ludique, pensée algorithmique, programmation et création de contenus."]]}],
+    ["Iota","plateforme d’apprentissage du numérique entre pairs pour le cycle 3 : univers ludique, pensée algorithmique, programmation et création de contenus."]]}],
   mat:["Ordinateurs ou tablettes avec connexion internet","Comptes élèves et enseignants (selon les ressources)","Temps d’entraînement régulier en classe"]},
  {id:"cyber", ico:"cyber", t:"Jeux déconnectés : cybercitoyenneté et cybersécurité",
   d:"Des jeux de cartes et de plateau, sans écran, pour amener les élèves à réfléchir ensemble aux risques du numérique : La Fresque des cybercitoyens, Molo-molo sur le web, Future of IA…",
