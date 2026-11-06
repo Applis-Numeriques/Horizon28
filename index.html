@@ -67,7 +67,6 @@ footer{margin-top:40px;background:var(--nv);color:#fff;border-radius:36px 36px 0
 @media (prefers-color-scheme:dark){footer{background:#0d0e29}}
 footer h2{color:#fff}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-footer a.ask{display:inline-block;border:2px solid #fff;color:#fff;font-weight:700;text-decoration:none;padding:10px 22px;border-radius:30px}
 footer a.mail{display:inline-block;margin-top:0;background:var(--or);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:30px}
 footer p{margin:0 0 6px}
 footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
@@ -78,11 +77,11 @@ footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
 .fiche h3{font-size:17px;color:var(--mg);margin:14px 0 4px}
 .fiche ol,.fiche ul{margin:0;padding-left:20px}
 .fiche li{margin:5px 0}
-.formbox{background:var(--card);border:2px dashed var(--or);border-radius:20px;padding:20px;text-align:center}
-.formbox h2{margin-bottom:6px}
-.formbox p{margin:0 0 14px}
-.formbtn{display:inline-block;background:var(--mg);color:#fff;font-weight:700;text-decoration:none;padding:13px 26px;border-radius:30px}
-.formbtn:hover{filter:brightness(1.1)}
+.gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:10px -18px 4px;padding:0 18px 6px}
+.gallery:empty{display:none}
+.gallery figure{margin:0;flex:0 0 80%;max-width:360px;scroll-snap-align:start}
+.gallery img{width:100%;height:210px;object-fit:cover;border-radius:16px;display:block;background:var(--soft)}
+.gallery figcaption{font-size:14px;margin-top:5px;opacity:.85}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -92,19 +91,14 @@ footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
   <div class="wrap">
     <h2>Nous contacter</h2>
     <p>Une question, un projet à construire avec votre établissement ?</p>
-    <div class="cta"><a class="mail" id="mail" href="#"></a><a class="ask" id="ask" href="#" target="_blank" rel="noopener noreferrer"></a></div>
+    <div class="cta"><a class="mail" id="mail" href="#"></a></div>
     <small>Projet européen cofinancé par l’Union européenne (FSE+) · GIP FTLV · Académie de Nancy-Metz</small>
   </div>
 </footer>
 
 <script>
 /* ====== À MODIFIER ====== */
-const CONTACT = "ce.dane@ac-nancy-metz.fr";   // ← remplacez par votre adresse mail
-const QUESTION_URL = "https://VOTRE-FORMULAIRE-QUESTION-GRIST";   // ← lien du formulaire « poser une question »
-const FORM_URL = "https://VOTRE-FORMULAIRE-GRIST";   // ← collez ici le lien de votre formulaire Grist
-const FORM_TITLE = "Un projet d’action dans votre établissement ?";
-const FORM_TEXT = "Remplissez le formulaire pour nous faire part de votre besoin ou de votre projet.";
-const FORM_BTN = "Remplir le formulaire";
+const CONTACT = "clement.henry@ac-nancy-metz.fr";   // ← remplacez par votre adresse mail
 
 /* ====== CONTENU ====== */
 const AXES = [
@@ -115,7 +109,7 @@ const AXES = [
  {id:2, t:"Un soutien à la motivation et à l’engagement", s:"Axe 2", ico:"axe2",
   intro:"Redonner du sens à l’école en valorisant les élèves et en les rendant acteurs de projets.",
   pts:["Valorisation du réseau des élèves Ambassadrices et Ambassadeurs du Numérique (ADN)","Déploiement de la bibliothèque du projet ESTIME","Développement d’actions spécifiques à destination des filles"],
-  acts:["estime","webradio","webtv","partenaires","prog"]},
+  acts:["estime","vr","webradio","webtv","partenaires","prog"]},
  {id:3, t:"Citoyenneté numérique", s:"Axe 3", ico:"axe3",
   intro:"Accompagner les élèves vers des usages du numérique raisonnés et responsables.",
   pts:["Accompagnement aux usages raisonnés et responsables du numérique","Valorisation des pratiques d’éducation à la citoyenneté numérique auprès des élèves","Évènements autour des usages du numérique responsable pour accompagner les élèves"],
@@ -138,25 +132,51 @@ const ACTIONS = [
   lien:"Répond directement à l’objectif de renforcement de la programmation (axe 1) et permet des actions dédiées aux filles (axe 2).",
   mat:["Kits Lego Spike, Lotibot ou robots Maqueen avec carte micro:bit","Ordinateurs ou tablettes","Tapis ou parcours et fiches défis","Un enseignant ou référent numérique pour animer"]},
  {id:"estime", ico:"estime", t:"ESTIME – bien-être des élèves",
-  d:"Dispositif porté par la DRANE pour le bien-être des élèves. Le projet Horizon 28 déploie la bibliothèque de ressources ESTIME dans les établissements.",
-  obj:["Favoriser l’estime de soi et le bien-être","Améliorer le climat scolaire","Prévenir le décrochage en agissant sur l’engagement et la confiance"],
+  d:"Dispositif académique porté par la DRANE, dédié au bien-être et à l’inclusion scolaire. Le projet Horizon 28 déploie les ressources et le matériel de la mallette ESTIME dans les établissements.",
+  obj:["Favoriser l’estime de soi et le bien-être","Améliorer le climat scolaire","Prévenir le décrochage en agissant sur l’engagement et la confiance","Lever les obstacles aux apprentissages et diversifier les modalités d’accès aux contenus"],
   lien:"Contribue directement à l’amélioration du bien-être et du climat scolaire, qui figurent parmi les objectifs du projet, et soutient la motivation (axe 2).",
-  mat:["Accès à la bibliothèque ESTIME","Ordinateur ou vidéoprojecteur pour les séances","Un temps de classe ou de vie scolaire dédié"]},
+  res:[{t:"Quelques ressources",l:[
+    ["IREMIA VR","application immersive de bien-être issue de la mallette ESTIME, utilisée avec un casque VR : parcours personnalisé de concentration, relaxation et respiration pour mieux gérer le stress et l’anxiété (voir l’action « Casque VR »)."],
+    ["Lili Cool","application audio qui aide les enfants de 4 à 12 ans à gagner en confiance et à gérer leurs émotions."],
+    ["Zamizen","jeu de cartes et guide de l’enseignant pour initier les enfants de 3 à 11 ans aux compétences psychosociales (émotions, attention, respiration) par des chansons, des histoires et des jeux."]]},
+   {t:"Quelques matériels",l:[
+    ["Eleph’Ant","outil de mémorisation par répétition espacée : fiches de révision, boîte physique et plateforme numérique pour les enseignants."],
+    ["Bookinou","boîte conteuse qui lit des histoires à voix haute : travaille l’oral et donne le goût de la lecture."],
+    ["Stylo lecteur IRISPen","stylo scanner qui numérise une ligne de texte et la lit à voix haute, utile aux élèves en difficulté de lecture."],
+    ["Visualizer IRIScan 7","scanner de bureau qui numérise les documents papier pour les rendre accessibles (lecture à voix haute selon le modèle)."]]}],
+  mat:["Accès aux ressources et au matériel de la mallette ESTIME","Ordinateur ou vidéoprojecteur pour les séances","Un temps de classe ou de vie scolaire dédié"]},
+ {id:"vr", ico:"vr", t:"Casque VR : réalité virtuelle",
+  d:"Le casque de réalité virtuelle plonge l’élève dans un environnement immersif. Il sert à se détendre, à découvrir des métiers et à visiter virtuellement des lieux inaccessibles en classe.",
+  obj:["Réduire le stress et l’anxiété, par exemple avant un oral ou un examen","Apprendre des techniques de concentration, de relaxation et de respiration réutilisables au quotidien","Découvrir des métiers et des lieux professionnels pour nourrir son orientation","Visiter virtuellement des lieux, des monuments ou des environnements éloignés","Susciter la curiosité et l’intérêt pour le numérique"],
+  lien:"Contribue au bien-être des élèves et au climat scolaire (objectifs du projet), soutient la motivation et l’engagement (axe 2) et fait découvrir des usages du numérique et ses métiers.",
+  res:[{t:"Les usages",l:[
+    ["Réduction du stress","avec l’application IREMIA VR (mallette ESTIME) : expérience immersive et sensorielle accompagnée d’un personnage guide, avec un parcours personnalisé de concentration, relaxation et respiration."],
+    ["Découverte des métiers","des applications ou vidéos immersives permettent de se glisser dans le quotidien d’un métier ou d’un lieu de travail."],
+    ["Visites virtuelles","musées, sites historiques, milieux naturels, laboratoires : une manière de voyager sans quitter la salle."]]}],
+  mat:["Casques de réalité virtuelle autonomes","Applications installées à l’avance (IREMIA VR, applications de visites ou de découverte des métiers)","Un espace dégagé et sécurisé, assis ou debout selon l’application","Un accompagnateur adulte par casque","Lingettes pour nettoyer les casques entre deux élèves"]},
  {id:"p2ia", ico:"p2ia", t:"Ressources P2IA",
-  d:"Ressources numériques d’entraînement pour consolider les savoirs fondamentaux en autonomie, à son rythme : Lalilo (lecture), MathIA (mathématiques), Mathlive, Iota…",
+  d:"Ressources numériques d’entraînement pour consolider les savoirs fondamentaux en autonomie, à son rythme : Lalilo (lecture), Mathia (mathématiques) et Iota (numérique), le projet de l’association 42.",
   obj:["Consolider lecture, écriture et mathématiques","Permettre un entraînement différencié selon les besoins","Donner de l’autonomie aux élèves, en classe ou à la maison"],
-  lien:"Soutient le renforcement de la maîtrise des savoirs fondamentaux (axe 1).",
+  lien:"Soutient le renforcement de la maîtrise des savoirs fondamentaux (axe 1) et, avec Iota, l’initiation à la programmation.",
+  res:[{t:"Quelques ressources",l:[
+    ["Lalilo","ressource d’entraînement à la lecture pour le cycle 2, qui adapte les exercices au niveau de chaque élève."],
+    ["Mathia","ressource de mathématiques qui propose des exercices adaptés au niveau et aux besoins de chaque élève."],
+    ["Iota","plateforme d’apprentissage du numérique entre pairs, conçue par l’école 42 avec l’Éducation nationale pour le cycle 3 : univers ludique, pensée algorithmique, programmation et création de contenus."]]}],
   mat:["Ordinateurs ou tablettes avec connexion internet","Comptes élèves et enseignants (selon les ressources)","Temps d’entraînement régulier en classe"]},
  {id:"cyber", ico:"cyber", t:"Jeux déconnectés : cybercitoyenneté et cybersécurité",
   d:"Des jeux de cartes et de plateau, sans écran, pour amener les élèves à réfléchir ensemble aux risques du numérique : La Fresque des cybercitoyens, Molo-molo sur le web, Future of IA…",
   obj:["Repérer les risques en ligne (cyberharcèlement, sécurité des données, désinformation)","Adopter des comportements responsables sur Internet","Débattre, argumenter et s’écouter dans un cadre bienveillant","Comprendre ce que l’IA change aux usages et aux métiers"],
   lien:"Répond à l’axe 3 (citoyenneté numérique, usages raisonnés et responsables), éclaire l’usage de l’IA générative en 4ème/3ème (axe 1) et peut être animé avec les élèves ADN (axe 2). Contribue aussi au climat scolaire.",
   mat:["Les jeux : Fresque des cybercitoyens (boîtes de cartes), kit Molo-molo sur le web, Future of IA (à imprimer)","Tables pour travailler en groupes de 4 à 6","Une tablette connectée ou un vidéoprojecteur pour les ressources complémentaires","Un adulte animateur formé aux règles du jeu choisi"]},
- {id:"partenaires", ico:"partenaires", t:"Partenaires : Girls Can Code, Prolongin…",
-  d:"Des partenaires extérieurs interviennent auprès des élèves pour faire découvrir le numérique et ses métiers, avec une attention particulière portée aux filles.",
-  obj:["Découvrir le numérique et ses métiers","Encourager l’engagement des filles dans les activités numériques","Ouvrir l’établissement à des intervenants extérieurs"],
+ {id:"partenaires", ico:"partenaires", t:"Partenaires : Prologin, Girls Can Code, Elles bougent",
+  d:"Des associations interviennent auprès des élèves pour faire découvrir le numérique et les métiers scientifiques et techniques, avec une attention particulière portée aux filles.",
+  obj:["Découvrir le numérique et ses métiers","Encourager l’engagement des filles dans les filières numériques et scientifiques","Rencontrer des modèles et des professionnelles en activité","Ouvrir l’établissement à des intervenants extérieurs"],
   lien:"Alimente les actions spécifiques à destination des filles (axe 2) et enrichit les projets de programmation et de citoyenneté numérique.",
-  mat:["Salle équipée pour l’intervention","Ordinateurs ou tablettes selon l’atelier","Planning à convenir avec le partenaire"]}
+  res:[{t:"Les partenaires",l:[
+    ["Prologin","association étudiante fondée en 1991, connue pour son concours d’informatique ouvert aux moins de 20 ans. Depuis 2014, elle organise les stages « Girls Can Code! » pour les filles."],
+    ["Girls Can Code!","stages gratuits d’initiation à l’informatique pour les collégiennes et lycéennes, animés par des étudiants. Deux formats : un week-end de deux jours et un stage d’une semaine l’été. Au programme : des travaux pratiques, par exemple en Python ou sur micro:bit."],
+    ["Elles bougent","association fondée en 2005 qui fait découvrir aux collégiennes et lycéennes les métiers d’ingénieure et de technicienne grâce à un réseau de marraines, des professionnelles qui témoignent de leur parcours. Elle organise des rencontres et des journées, dont la journée « Les sciences de l’ingénieur au féminin » menée avec l’UPSTI dans les collèges et lycées."]]}],
+  mat:["Salle équipée pour l’intervention","Ordinateurs ou tablettes selon l’atelier","Planning et inscriptions à convenir avec l’association"]}
 ];
 
 /* ====== FICHES DE SÉANCE (t=titre, m=durée/public, obj, e=[durée, étape], c=conseils) ====== */
@@ -216,7 +236,7 @@ const SEANCES = {
  p2ia:[{t:"Séance d’entraînement en autonomie", m:"Environ 55 min · élèves seuls ou en binômes · en classe",
   obj:["Consolider un savoir fondamental ciblé","S’entraîner à son rythme","Repérer ses progrès"],
   e:[["10 min","Connexion et rappel de l’objectif (lecture ou mathématiques)."],
-     ["30 min","Entraînement individuel sur la ressource (Lalilo, MathIA…)."],
+     ["30 min","Entraînement individuel sur la ressource (Lalilo, Mathia, Iota…)."],
      ["10 min","Bilan : chaque élève note ce qu’il a réussi et ce qui reste difficile."],
      ["5 min","Rangement ; l’enseignant relève les résultats pour adapter la suite."]],
   c:["Préparer les comptes élèves avant la séance.","Programmer la séance chaque semaine pour que l’effet dure."]}],
@@ -240,6 +260,20 @@ const SEANCES = {
      ["1 h 30","Atelier en groupes, selon les consignes du jeu imprimé."],
      ["20 min","Restitution et débat : quels métiers apparaissent, lesquels évoluent, quelles questions éthiques se posent."]],
   c:["Imprimer et préparer le matériel avant la séance.","Suivre les consignes du jeu pour le déroulement détaillé."]}],
+ vr:[{t:"Relaxation immersive avec IREMIA VR", m:"Environ 55 min · classe entière en rotation · collège · à ajuster à la durée du parcours",
+  obj:["Expérimenter une technique de relaxation et de respiration","Mettre des mots sur ce que l’on ressent","Savoir refaire un exercice de respiration sans casque"],
+  e:[["10 min","Accueil : explication de la séance, consignes de sécurité, participation sur la base du volontariat."],
+     ["25 min","Passage de chaque élève à tour de rôle avec le casque, accompagné d’un adulte. Les autres font un exercice de respiration calme."],
+     ["10 min","Échange en cercle : comment je me sens, ce que j’ai ressenti, sans jugement."],
+     ["10 min","Je retiens un exercice de respiration que je peux refaire seul, par exemple avant une évaluation."]],
+  c:["Prévoir un adulte par casque et un espace dégagé.","Respecter l’âge minimal indiqué par le fabricant et faire des séances courtes avec des pauses.","Proposer une alternative sans casque à un élève qui ne souhaite pas essayer."]},
+ {t:"Découverte des métiers et visites virtuelles", m:"Environ 55 min · groupes de 4 en rotation · collège (4ème-3ème en priorité)",
+  obj:["Découvrir des métiers et des lieux professionnels","Se poser des questions sur son orientation","Restituer ce que l’on a observé"],
+  e:[["10 min","Présentation de l’objectif et choix d’un métier ou d’un lieu par groupe."],
+     ["25 min","Exploration en rotation avec le casque ; les autres préparent la fiche métier."],
+     ["15 min","Restitution : ce que j’ai vu, la formation nécessaire, les qualités utiles, ce qui m’a surpris."],
+     ["5 min","Bilan : quel métier me donne envie d’en savoir plus ?"]],
+  c:["Choisir à l’avance les applications et les vérifier avant la séance.","Garder une trace écrite pour le parcours Avenir."]}],
  partenaires:[{t:"Préparer et exploiter l’intervention d’un partenaire", m:"Avant, pendant et après · durée de l’intervention à définir avec le partenaire",
   obj:["Faire découvrir le numérique et ses métiers","Encourager l’engagement des filles","Faire dire aux élèves ce qu’ils ont appris"],
   e:[["20 min","Avant : les élèves préparent des questions pour l’intervenant."],
@@ -247,10 +281,24 @@ const SEANCES = {
      ["20 min","Après : chaque groupe restitue ce qu’il a retenu (affiche, message, court podcast)."]]}]
 };
 
+/* ====== PHOTOS (déposer les images dans le dossier "photos" avec ces noms ; une photo absente n’est simplement pas affichée) ====== */
+const PHOTOS = {
+ webradio:[["webradio.jpg","La webradio"]],
+ webtv:[["webtv.jpg","La webTV"]],
+ prog:[["spike.jpg","Lego Spike"],["lotibot.jpg","Lotibot"],["maqueen.jpg","Robot Maqueen et carte micro:bit"]],
+ estime:[["estime.jpg","ESTIME"]],
+ vr:[["vr.jpg","Le casque VR"]],
+ p2ia:[["p2ia.jpg","Ressources P2IA"]],
+ cyber:[["fresque.jpg","La Fresque des cybercitoyens"],["molomolo.jpg","Molo-molo sur le web"],["futureofia.jpg","Future of IA"]],
+ partenaires:[["partenaires.jpg","Les partenaires"]]
+};
+const rs=a=>(a.res||[]).map(g=>`<div class="box"><h2>${g.t}</h2><ul>${g.l.map(x=>`<li><b>${x[0]}</b> : ${x[1]}</li>`).join('')}</ul></div>`).join('');
+const gal=a=>`<div class="gallery">${(PHOTOS[a.id]||[]).map(([f,c])=>`<figure><img src="photos/${f}" alt="${c}" loading="lazy" onerror="this.parentNode.remove()"><figcaption>${c}</figcaption></figure>`).join('')}</div>`;
+
 /* ====== RENDU ====== */
 const app=document.getElementById('app');
 const ic=(n,z)=>`<img src="icons/${n}.svg" alt="" width="${z}" height="${z}">`;
-const SHORT={prog:"Programmation et robotique",estime:"ESTIME",cyber:"Jeux déconnectés",partenaires:"Partenaires"};
+const SHORT={vr:"Casque VR",prog:"Programmation et robotique",estime:"ESTIME",cyber:"Jeux déconnectés",partenaires:"Partenaires"};
 const lab=a=>SHORT[a.id]||a.t;
 const li=a=>'<ul>'+a.map(x=>`<li>${x}</li>`).join('')+'</ul>';
 const home=()=>`
@@ -258,7 +306,7 @@ const home=()=>`
   <div class="brand"><div class="logo">horizon <b>28</b></div><div class="fse">Projet européen FSE+</div></div>
   <h1>Lutter contre le décrochage scolaire <span>par le numérique</span></h1>
   <p>Horizon 28 s’appuie sur le numérique pour prévenir le décrochage scolaire, améliorer le bien-être des élèves et renforcer le climat scolaire. Il développe les compétences du XXIème siècle (créativité, communication, collaboration, esprit critique) pour favoriser autonomie et persévérance.</p>
-  <div class="zones"><em>Public : élèves du primaire et collégiens. Zones ciblées :</em><span>TER</span><span>REP</span><span>REP+</span></div>
+  <div class="zones"><em>Public : élèves du primaire et collégiens. Zones ciblées dans les départements 54 et 57 :</em><span>TER</span><span>REP</span><span>REP+</span></div>
   <button id="inst" type="button">Installer l’application</button>
 </div></header>
 <div class="wrap">
@@ -268,16 +316,18 @@ ${AXES.map(a=>`<a class="axe" href="#/axe/${a.id}"><span class="tile">${ic(a.ico
 <section><h2>Exemples d’actions à mener</h2><nav class="grid">
 ${ACTIONS.map(a=>`<a class="act" href="#/action/${a.id}"><span class="tile">${ic(a.ico,42)}</span><span class="lb">${lab(a)}</span></a>`).join('')}
 </nav></section>
-<section><div class="formbox"><h2>${FORM_TITLE}</h2><p>${FORM_TEXT}</p><a class="formbtn" href="${FORM_URL}" target="_blank" rel="noopener noreferrer">${FORM_BTN} ↗</a></div></section></div>`;
+</div>`;
 const axe=a=>`<div class="wrap"><a class="back" href="#/">‹ Accueil</a>
 <div class="head"><span class="tile">${ic(a.ico,64)}</span><p class="tag">${a.s}</p><h1>${a.t}</h1><p>${a.intro}</p></div>
 <div class="box"><h2>Ce que prévoit le projet</h2>${li(a.pts)}</div>
 <div class="box"><h2>Actions pour y répondre</h2><div class="chips">${a.acts.map(i=>{const x=ACTIONS.find(y=>y.id===i);return `<a href="#/action/${i}">${ic(x.ico,22)} ${lab(x)}</a>`}).join('')}</div></div></div>`;
 const action=a=>{const ax=AXES.filter(x=>x.acts.includes(a.id));return `<div class="wrap"><a class="back" href="#/">‹ Accueil</a>
 <div class="head"><span class="tile">${ic(a.ico,64)}</span><h1>${a.t}</h1><p>${a.d}</p></div>
+${gal(a)}
 <div class="box"><h2>Objectifs pédagogiques</h2>${li(a.obj)}</div>
 <div class="box"><h2>Lien avec Horizon 28</h2><p style="margin:0">${a.lien}</p>
 <div class="chips" style="margin-top:12px">${ax.map(x=>`<a href="#/axe/${x.id}">${x.s} · ${x.t}</a>`).join('')}</div></div>
+${rs(a)}
 <div class="box"><h2>Matériel nécessaire</h2>${li(a.mat)}</div>
 <div class="box"><h2>Fiches de séance clés en main</h2>${sea(a)}</div></div>`};
 const sea=a=>(SEANCES[a.id]||[]).map(s=>`<details class="fiche"><summary>${s.t}<small>${s.m}</small></summary><h3>Objectifs pédagogiques</h3>${li(s.obj)}<h3>Déroulement</h3><ol>${s.e.map(x=>`<li><b>${x[0]}</b> · ${x[1]}</li>`).join('')}</ol>${s.c?`<h3>Conseils</h3>${li(s.c)}`:''}</details>`).join('');
@@ -297,7 +347,6 @@ document.addEventListener('click',e=>{
 window.addEventListener('popstate',()=>route());
 window.addEventListener('hashchange',()=>route());
 const m=document.getElementById('mail');m.href='mailto:'+CONTACT;m.textContent=CONTACT;
-const q=document.getElementById('ask');q.href=QUESTION_URL;q.textContent='Poser une question en ligne ↗';
 
 /* ====== INSTALLATION (PWA) ====== */
 let dp=null;
