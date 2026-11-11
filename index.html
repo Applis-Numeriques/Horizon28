@@ -94,7 +94,7 @@ footer small a{text-decoration:underline}
 <footer>
   <div class="wrap">
     <h2>Un projet ? Une question ?</h2>
-    <p>Une demande pour un projet ? Complétez l’EDB (Expression De Besoin) ci-dessous</p>
+    <p>Une demande pour un projet ? Complétez l’EDB (Expression De Besoin) ci-dessous :</p>
     <div class="cta"><a class="mail" id="edb" href="documents/EDB.docx" download>EDB</a></div>
     <p class="gap">Une question ? Besoin d’aide ? Un projet à construire dans le 54 ?</p>
     <div class="cta"><a class="mail" id="mail" href="#"></a></div>
@@ -347,12 +347,11 @@ const mentions=()=>`<div class="wrap legalpage"><a class="back" href="#/">‹ Ac
 <div class="head"><h1>Mentions légales</h1></div>
 <h2>Éditeur et propriétaire</h2><p>Application « Horizon 28 » éditée par HENRY Clément, à titre personnel. © HENRY Clément, tous droits réservés.</p>
 <p>Contact : <a href="mailto:${CONTACT}">${CONTACT}</a></p>
-<p>Statut, adresse postale : <span class="todo">À COMPLÉTER</span></p>
 <h2>Directeur de la publication</h2><p>HENRY Clément</p>
 <h2>Hébergement</h2><p>Application hébergée par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis).</p>
-<h2>Projet et financement</h2><p>Horizon 28 est un projet européen cofinancé par l’Union européenne (FSE+), porté par le GIP FTLV, Académie de Nancy-Metz. Les logos et marques cités appartiennent à leurs propriétaires respectifs.</p>
-<h2>Propriété intellectuelle</h2><p>Les textes, icônes et la mise en page de l’application sont la propriété de HENRY Clément. Toute reproduction sans autorisation est interdite. <span class="todo">À COMPLÉTER : licence éventuelle</span></p>
-<h2>Données personnelles</h2><p>L’application ne dépose pas de cookie de suivi et ne collecte aucune donnée personnelle. Les échanges par courriel et les documents que vous transmettez sont traités uniquement pour répondre à votre demande. Pour exercer vos droits (accès, rectification, suppression), écrivez à l’adresse de contact. <span class="todo">À COMPLÉTER : durée de conservation, référent RGPD</span></p>
+<h2>Projet</h2><p>Horizon 28 est un projet européen cofinancé par l’Union européenne (FSE+), porté par le GIP FTLV, Académie de Nancy-Metz. Les logos et marques cités appartiennent à leurs propriétaires respectifs.</p>
+<h2>Propriété intellectuelle</h2><p>Les textes, icônes et la mise en page de l’application sont la propriété de HENRY Clément. Toute reproduction sans autorisation est interdite.</p>
+<h2>Données personnelles</h2><p>L’application ne dépose pas de cookie de suivi et ne collecte aucune donnée personnelle. Les échanges par courriel et les documents que vous transmettez sont traités uniquement pour répondre à votre demande. Pour exercer vos droits (accès, rectification, suppression), écrivez à l’adresse de contact.</p>
 <h2>Liens externes</h2><p>L’éditeur n’est pas responsable du contenu des sites vers lesquels l’application pourrait renvoyer.</p></div>`;
 function route(p){
   const [,k,id]=(typeof p==='string'?p:(location.hash||'#/')).split('/');
