@@ -70,6 +70,10 @@ footer h2{color:#fff}
 footer a.mail{display:inline-block;margin-top:0;background:var(--or);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:30px}
 footer p{margin:0 0 6px}
 footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
+footer p.gap{margin-top:22px}
+footer small.legal{margin-top:8px;font-size:12px}
+footer small a{text-decoration:underline}
+.legalpage h2{font-size:22px;margin:18px 0 6px}.legalpage p{margin:0 0 8px}.todo{background:#fff3b0;color:#1d1f4a;padding:0 4px;border-radius:4px}
 #inst{display:none;margin-top:14px;background:#fff;color:var(--nv);border:0;border-radius:30px;padding:9px 18px;font:700 15px "Nunito Sans",sans-serif;cursor:pointer}
 .fiche{background:var(--soft);border-radius:14px;padding:12px 16px;margin:10px 0}
 .fiche summary{cursor:pointer;font:700 20px/1.2 Oswald,sans-serif;color:var(--nv)}
@@ -89,10 +93,13 @@ footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
 <main id="app"></main>
 <footer>
   <div class="wrap">
-    <h2>Nous contacter</h2>
-    <p>Une question, un projet à construire avec votre établissement dans le 54 ?</p>
+    <h2>Un projet ? Une question ?</h2>
+    <p>Une demande pour un projet ? Complétez l’EDB (Expression De Besoin) ci-dessous</p>
+    <div class="cta"><a class="mail" id="edb" href="documents/EDB.docx" download>EDB</a></div>
+    <p class="gap">Une question ? Besoin d’aide ? Un projet à construire dans le 54 ?</p>
     <div class="cta"><a class="mail" id="mail" href="#"></a></div>
     <small>Projet européen cofinancé par l’Union européenne (FSE+) · GIP FTLV · Académie de Nancy-Metz</small>
+    <small class="legal">© HENRY Clément · Application propriété de HENRY Clément · <a href="#/mentions">Mentions légales</a></small>
   </div>
 </footer>
 
@@ -336,11 +343,22 @@ ${rs(a)}
 <div class="box"><h2>Matériel nécessaire</h2>${li(a.mat)}</div>
 <div class="box"><h2>Fiches de séance clés en main</h2>${sea(a)}</div></div>`};
 const sea=a=>(SEANCES[a.id]||[]).map(s=>`<details class="fiche"><summary>${s.t}<small>${s.m}</small></summary><h3>Objectifs pédagogiques</h3>${li(s.obj)}<h3>Déroulement</h3><ol>${s.e.map(x=>`<li><b>${x[0]}</b> · ${x[1]}</li>`).join('')}</ol>${s.c?`<h3>Conseils</h3>${li(s.c)}`:''}</details>`).join('');
+const mentions=()=>`<div class="wrap legalpage"><a class="back" href="#/">‹ Accueil</a>
+<div class="head"><h1>Mentions légales</h1></div>
+<h2>Éditeur et propriétaire</h2><p>Application « Horizon 28 » éditée par HENRY Clément, à titre personnel. © HENRY Clément, tous droits réservés.</p>
+<p>Contact : <a href="mailto:${CONTACT}">${CONTACT}</a></p>
+<p>Statut, adresse postale : <span class="todo">À COMPLÉTER</span></p>
+<h2>Directeur de la publication</h2><p>HENRY Clément</p>
+<h2>Hébergement</h2><p>Application hébergée par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis).</p>
+<h2>Projet et financement</h2><p>Horizon 28 est un projet européen cofinancé par l’Union européenne (FSE+), porté par le GIP FTLV, Académie de Nancy-Metz. Les logos et marques cités appartiennent à leurs propriétaires respectifs.</p>
+<h2>Propriété intellectuelle</h2><p>Les textes, icônes et la mise en page de l’application sont la propriété de HENRY Clément. Toute reproduction sans autorisation est interdite. <span class="todo">À COMPLÉTER : licence éventuelle</span></p>
+<h2>Données personnelles</h2><p>L’application ne dépose pas de cookie de suivi et ne collecte aucune donnée personnelle. Les échanges par courriel et les documents que vous transmettez sont traités uniquement pour répondre à votre demande. Pour exercer vos droits (accès, rectification, suppression), écrivez à l’adresse de contact. <span class="todo">À COMPLÉTER : durée de conservation, référent RGPD</span></p>
+<h2>Liens externes</h2><p>L’éditeur n’est pas responsable du contenu des sites vers lesquels l’application pourrait renvoyer.</p></div>`;
 function route(p){
   const [,k,id]=(typeof p==='string'?p:(location.hash||'#/')).split('/');
-  const A=k==='axe'&&AXES.find(x=>x.id==id), B=k==='action'&&ACTIONS.find(x=>x.id===id);
-  app.innerHTML=(A?axe(A):B?action(B):home()).replace(/ ([:;!?])/g,'&nbsp;$1');
-  document.title=(A?A.s:B?B.t:'Horizon 28')+' – Horizon 28';
+  const A=k==='axe'&&AXES.find(x=>x.id==id), B=k==='action'&&ACTIONS.find(x=>x.id===id), M=k==='mentions';
+  app.innerHTML=(M?mentions():A?axe(A):B?action(B):home()).replace(/ ([:;!?])/g,'&nbsp;$1');
+  document.title=(M?'Mentions légales':A?A.s:B?B.t:'Horizon 28')+' – Horizon 28';
   window.scrollTo(0,0); bindInstall();
 }
 document.addEventListener('click',e=>{
