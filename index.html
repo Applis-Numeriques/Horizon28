@@ -69,6 +69,14 @@ footer h2{color:#fff}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 footer a.mail{display:inline-block;margin-top:0;background:var(--or);color:#fff;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:30px}
 footer a#edb{background:var(--mg)}
+.depts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.dept{background:rgba(255,255,255,.09);border-radius:16px;padding:12px 16px 6px}
+.dept h3{font-size:18px;color:#fff;margin:0 0 4px}
+.dept a{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;color:#fff;text-decoration:none;padding:8px 0;border-top:1px solid rgba(255,255,255,.2);font-size:14px;line-height:1.35}
+.dept a b{background:var(--or);border-radius:12px;padding:1px 11px;font-size:13px;white-space:nowrap}
+.dept a span{flex-basis:100%;overflow-wrap:anywhere}
+.dept a:hover span{text-decoration:underline}
+@media (max-width:620px){.depts{grid-template-columns:1fr}}
 footer p{margin:0 0 6px}
 footer small{display:block;margin-top:18px;opacity:.75;font-size:14px}
 footer p.gap{margin-top:22px}
@@ -94,16 +102,20 @@ footer small a{text-decoration:underline}
 <main id="app"></main>
 <footer>
   <div class="wrap">
-    <h2>Un projet ? Une question ?</h2>
-    <p>Une demande spécifique pour un projet, un besoin de financement ? Complétez l’Expression De Besoin ci-dessous :</p>
+    <h2>Un projet&nbsp;? Une question&nbsp;?</h2>
+    <p>Une demande spécifique pour un projet, un besoin de financement&nbsp;? Complétez l’Expression De Besoin ci-dessous&nbsp;:</p>
     <div class="cta"><a class="mail" id="edb" href="documents/EDB.docx" download>Télécharger l'Expression De Besoin (docx)</a></div>
-    <p class="gap">Une question ? Besoin d’aide ? Un projet à construire ?</p>
-    <div class="cta">
-  <a class="mail" href="mailto:jean-baptiste.colin1@ac-nancy-metz.fr">Dans le 54, pour le 1er degré&nbsp;: jean-baptiste.colin1@ac-nancy-metz.fr</a>
-  <a class="mail" href="mailto:clement.henry@ac-nancy-metz.fr">Dans le 54 pour le 2nd degré&nbsp;: clement.henry@ac-nancy-metz.fr</a>
-  <a class="mail" href="mailto:stephanie.krommenacker1@ac-nancy-metz.fr">Dans le 57, pour le 1er degré&nbsp;: stephanie.krommenacker1@ac-nancy-metz.fr</a>
-  <a class="mail" href="mailto:adriano.lanzeroti@ac-nancy-metz.fr">Dans le 57 pour le 2nd degré&nbsp;: adriano.lanzeroti@ac-nancy-metz.fr</a>
-</div>   
+    <p class="gap">Une question&nbsp;? Besoin d’aide&nbsp;? Un projet à construire&nbsp;?</p>
+    <div class="depts">
+      <div class="dept"><h3>Meurthe-et-Moselle (54)</h3>
+        <a href="mailto:jean-baptiste.colin1@ac-nancy-metz.fr"><b>1er degré</b><span>jean-baptiste.colin1@ac-nancy-metz.fr</span></a>
+        <a href="mailto:clement.henry@ac-nancy-metz.fr"><b>2nd degré</b><span>clement.henry@ac-nancy-metz.fr</span></a>
+      </div>
+      <div class="dept"><h3>Moselle (57)</h3>
+        <a href="mailto:stephanie.krommenacker1@ac-nancy-metz.fr"><b>1er degré</b><span>stephanie.krommenacker1@ac-nancy-metz.fr</span></a>
+        <a href="mailto:adriano.lanzeroti@ac-nancy-metz.fr"><b>2nd degré</b><span>adriano.lanzeroti@ac-nancy-metz.fr</span></a>
+      </div>
+    </div>
     <small>Projet européen cofinancé par l’Union européenne (FSE+) · GIP FTLV · Académie de Nancy-Metz</small>
     <small class="legal">© HENRY Clément · Application propriété de HENRY Clément · <a href="#/mentions">Mentions légales</a></small>
   </div>
